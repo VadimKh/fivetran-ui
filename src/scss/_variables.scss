@@ -1,0 +1,44 @@
+
+
+$BASE_FONT_SIZE: 12;
+
+$primary: #00ABFF;
+$primary-dark: #000F9F;
+$primary-light: #CCE6FF;
+$primary-light-extra: #EEF5FC;
+
+$green: #93D500;
+$red: #F32735;
+$orange: #FF9E18;
+$violet: #773DBD;
+
+$white: #FFF;
+$black: #000;
+
+$gray-dark: #323E48;
+$gray: #7B868C;
+$gray-light: #CFD2D3;
+$gray-light-extra: #F7F7F7;
+
+$font-family-base: 'Simplon Norm', 'sans-serif';
+
+$grid-breakpoints: (
+  xs: 0,
+  md: 1280px,
+  lg: 1920px
+);
+
+$spacer: 1rem;
+$spacers: (
+  6: ($spacer * 6)
+);
+
+$grid-gutter-width: 4rem;
+
+$container-gutter: (
+  xs: 2 * $spacer,
+  xl: 4 * $spacer,
+  hd: 5 * $spacer,
+  fhd: 10 * $spacer
+)
+

@@ -1,0 +1,79 @@
+@function toRem ($pxsize) {
+    @return ($pxsize/$BASE_FONT_SIZE)+rem;
+}
+
+@function toFixedRem($pxsize, $breakpoint) {
+    @if($breakpoint == 'md') {
+        @return toRem($pxsize / 1.5);
+    }
+
+    @if($breakpoint == 'lg') {
+        @return toRem($pxsize / 2);
+    }
+
+    @return toRem($pxsize);
+}
+
+@mixin shadow-small() {
+    box-shadow: 0 toRem(3) toRem(6) rgba($black, .16);
+}
+
+@mixin shadow() {
+    box-shadow: 0 toRem(6) toRem(12) rgba($black, .16);
+}
+
+@mixin shadow-glow {
+    box-shadow: 0 toRem(6) toRem(12) rgba($black, .16), 0 toRem(3) toRem(72) rgba($primary, .33);
+}
+
+@mixin big-shadow() {
+    box-shadow: 0 toRem(9) toRem(18) rgba($black, .16);
+}
+
+@mixin animation() {
+    transition: all .4s ease;
+}
+
+@mixin define-header-sizes() {
+    $count: 0;
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @include media-breakpoint-up($breakpoint) {
+            @each $num in (6, 5, 4, 3, 2, 1) {
+                h#{$num} {
+                    font-size: toFixedRem(((6 - $num) * 6 + $count * 6), $breakpoint);
+                }
+            }
+        }
+        $count: $count + 1
+    }
+}
+
+@mixin define-paragraph-sizes() {
+    $count: 0;
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @include media-breakpoint-up($breakpoint) {
+            @each $index, $class in (3: '', 4: '.lg', 2: '.sm', 1: '.xs') {
+                p#{$class} {
+                    font-size: toFixedRem(6 * $index + $count * 6, $breakpoint);
+                }
+            }
+        }
+        $count: $count + 1
+    }
+}
+
+@mixin define-html-body-sizes() {
+    $count: 0;
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @include media-breakpoint-up($breakpoint) {
+            html {
+                font-size: ($BASE_FONT_SIZE + $count * 6) * 1px;
+            }
+            body {
+                font-size: toFixedRem(18 + $count * 6, $breakpoint);
+            }
+        }
+        $count: $count + 1
+    }
+}
+
