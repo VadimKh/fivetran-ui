@@ -1,0 +1,90 @@
+.menu {
+    &-container {
+        @extend .container-fluid;
+        @extend .shadow-2;
+        position: relative;
+        z-index: 1;
+    }
+
+    &-row {
+        @extend .row;
+        @include define-prop-sizes(height, (96, 120, 144));
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-logo {
+        width: toRem(156);
+        color: $primary;
+    }
+
+    &-link {
+        font-size: toRem(18);
+        @include margin(lg, right);
+        color: $gray-dark;
+        @include animation();
+
+        &:hover {
+            text-decoration: none;
+            color: $primary;
+        }
+    }
+}
+.breadcrumb {
+    background: $gray-light-extra;
+
+    &-container {
+        @extend .container-fluid;
+        border-bottom: 3px solid $gray-light;
+    }
+
+    &-row {
+        @extend .row;
+        @include define-prop-sizes(height, (36, 48, 60));
+        align-items: center;
+    }
+
+    &-col {
+        @extend .col;
+        display: flex;
+        top: toRem(3);
+    }
+
+    &-icon, &-link {
+        color: $gray;
+        @include define-prop-sizes(font-size, (12, 14, 18));
+        line-height: 1;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &-icon {
+        @include margin(lg, right);
+    }
+
+    &-link {
+        position: relative;
+        @include margin(md, right);
+
+        &:after {
+            content: '>';
+            @include margin(md, left);
+        }
+
+        &:last-child {
+            &:after {
+                position: absolute;
+                left: -.5rem;
+                right: -.5rem;
+                height: 3px;
+                background: $primary;
+                display: block;
+                content: '';
+                margin: 0;
+                @include define-prop-sizes(bottom, (-12, -14, -18));
+            }
+        }
+    }
+}
