@@ -23,5 +23,5 @@
     "gh-pages": "^1.2.0",
     "typescript": "^3.0.1"
   },
-  "homepage": "https://vadimkh.github.io/fivetran-ui/build"
+  "homepage": "https://vadimkh.github.io/fivetran-ui"
 }
