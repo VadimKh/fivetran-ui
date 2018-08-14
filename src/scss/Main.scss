@@ -1,8 +1,14 @@
 @import "variables";
 @import "components/grid/grid";
 
+@import "function";
 @import "mixin";
 @import "utils";
 @import "typography";
+
+@import "components/shadow";
+@import "components/button";
+@import "components/block";
+@import "components/card";
 
 

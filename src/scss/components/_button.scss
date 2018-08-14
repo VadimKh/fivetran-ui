@@ -1,0 +1,23 @@
+.btn {
+    font-size: 1rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    background: $primary;
+    color: $white;
+    border-radius: 3rem;
+    border: none;
+    @include animation();
+    cursor: pointer;
+    outline: none;
+    @extend .shadow-2;
+    text-align: center;
+
+    &:hover {
+        background: $primary-dark;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}

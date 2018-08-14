@@ -1,0 +1,43 @@
+.block {
+    @include padding(md, y);
+
+    &-preheader {
+        @include margin(sm, bottom);
+        @include letter-spacing();
+        @include define-prop-sizes(font-size, (12, 14, 18));
+        color: $primary;
+        line-height: 2;
+        text-transform: uppercase;
+    }
+
+    &-header {
+        h1, h2, h3, h4 {
+            line-height: 1;
+        }
+        @include margin(sm, bottom);
+    }
+
+    &-subheader {
+        color: $gray-dark;
+
+        @include define-prop-sizes(font-size, (18, 24, 30));
+        @include define-prop-sizes(line-height, (30, 36, 42));
+
+        @include media-breakpoint-up(lg) {
+            color: $gray;
+        }
+
+        &.secondary {
+            @include define-prop-sizes(font-size, (12, 18, 24));
+            @include define-prop-sizes(line-height, (24, 30, 36))
+        }
+    }
+
+    &-content {
+        color: $gray;
+    }
+
+    &-button {
+        @include margin(md, top);
+    }
+}

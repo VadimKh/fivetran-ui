@@ -1,0 +1,21 @@
+.shadow{
+    &-1 {
+        border: 1px solid $gray-light;
+    }
+
+    &-2 {
+        box-shadow: 0 3px 6px rgba($black, .2);
+    }
+
+    &-3 {
+        box-shadow: 0 6px 12px rgba($black, .2);
+    }
+
+    &-4 {
+        box-shadow: 0 12px 24px rgba($black, .2);
+    }
+
+    &-5 {
+        box-shadow: 0 24px 48px rgba($black, .2);
+    }
+}

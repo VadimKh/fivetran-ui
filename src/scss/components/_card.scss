@@ -1,0 +1,23 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    height: 100%;
+    @extend .shadow-1;
+
+    &-image {
+        background: $primary-dark;
+        @include padding(lg);
+    }
+
+    &-body {
+        @include padding(lg, x);
+    }
+
+    &-footer {
+        align-self: flex-start;
+        margin-top: auto;
+        @include padding(lg, x);
+        @include padding(lg, bottom);
+    }
+}

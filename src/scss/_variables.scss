@@ -1,6 +1,7 @@
 
 
-$BASE_FONT_SIZE: 12;
+$BASE: 6;
+$BASE_FONT_SIZE: 2 * $BASE;
 
 $primary: #00ABFF;
 $primary-dark: #000F9F;
@@ -20,7 +21,7 @@ $gray: #7B868C;
 $gray-light: #CFD2D3;
 $gray-light-extra: #F7F7F7;
 
-$font-family-base: 'Simplon Norm', 'sans-serif';
+$font-family-sans-serif: 'Simplon Norm', 'sans-serif';
 
 $grid-breakpoints: (
   xs: 0,

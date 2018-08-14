@@ -1,79 +1,119 @@
-@function toRem ($pxsize) {
-    @return ($pxsize/$BASE_FONT_SIZE)+rem;
-}
-
-@function toFixedRem($pxsize, $breakpoint) {
-    @if($breakpoint == 'md') {
-        @return toRem($pxsize / 1.5);
-    }
-
-    @if($breakpoint == 'lg') {
-        @return toRem($pxsize / 2);
-    }
-
-    @return toRem($pxsize);
-}
-
-@mixin shadow-small() {
-    box-shadow: 0 toRem(3) toRem(6) rgba($black, .16);
-}
-
-@mixin shadow() {
-    box-shadow: 0 toRem(6) toRem(12) rgba($black, .16);
-}
-
-@mixin shadow-glow {
-    box-shadow: 0 toRem(6) toRem(12) rgba($black, .16), 0 toRem(3) toRem(72) rgba($primary, .33);
-}
-
-@mixin big-shadow() {
-    box-shadow: 0 toRem(9) toRem(18) rgba($black, .16);
-}
-
 @mixin animation() {
     transition: all .4s ease;
 }
 
 @mixin define-header-sizes() {
-    $count: 0;
+    $index: 0;
     @each $breakpoint in map-keys($grid-breakpoints) {
         @include media-breakpoint-up($breakpoint) {
             @each $num in (6, 5, 4, 3, 2, 1) {
                 h#{$num} {
-                    font-size: toFixedRem(((6 - $num) * 6 + $count * 6), $breakpoint);
+                    font-size: toFixedRem(((6 - $num) * $BASE + $index * $BASE), $breakpoint);
+                    line-height: toFixedRem(((6 - $num) * $BASE + $index * $BASE + $BASE), $breakpoint);
                 }
             }
         }
-        $count: $count + 1
+        $index: $index + 1
     }
 }
 
 @mixin define-paragraph-sizes() {
-    $count: 0;
+    $index: 0;
     @each $breakpoint in map-keys($grid-breakpoints) {
         @include media-breakpoint-up($breakpoint) {
-            @each $index, $class in (3: '', 4: '.lg', 2: '.sm', 1: '.xs') {
+            @each $count, $class in (3: '', 4: '.lg', 2: '.sm', 1: '.xs') {
                 p#{$class} {
-                    font-size: toFixedRem(6 * $index + $count * 6, $breakpoint);
+                    font-size: toFixedRem($BASE * $count + $index * $BASE, $breakpoint);
+                    line-height: toFixedRem($BASE * $count + $index * $BASE + 2 * $BASE, $breakpoint);
                 }
             }
         }
-        $count: $count + 1
+        $index: $index + 1
     }
 }
 
 @mixin define-html-body-sizes() {
-    $count: 0;
+    $index: 0;
     @each $breakpoint in map-keys($grid-breakpoints) {
         @include media-breakpoint-up($breakpoint) {
             html {
-                font-size: ($BASE_FONT_SIZE + $count * 6) * 1px;
+                font-size: ($BASE_FONT_SIZE + $index * $BASE) * 1px;
             }
             body {
-                font-size: toFixedRem(18 + $count * 6, $breakpoint);
+                font-size: toFixedRem(3 * $BASE + $index * $BASE, $breakpoint);
             }
         }
-        $count: $count + 1
+        $index: $index + 1
     }
 }
 
+@mixin letter-spacing() {
+    letter-spacing: .25rem;
+}
+
+@mixin define-mp($prop, $direction, $size) {
+    $index: 0;
+    $additional: 0;
+    @if($size == md) {
+        $additional: 1;
+    }
+    @if($size == lg) {
+        $additional: 2;
+    }
+
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @include media-breakpoint-up($breakpoint) {
+            @if($direction == null) {
+                #{$prop}: toFixedRem($BASE * pow(2, $index + $additional), $breakpoint);
+            }
+            @if($direction == y) {
+                #{$prop}-top: toFixedRem($BASE * pow(2, $index + $additional), $breakpoint);
+                #{$prop}-bottom: toFixedRem($BASE * pow(2, $index + $additional), $breakpoint);
+            }
+            @if($direction == x) {
+                #{$prop}-left: toFixedRem($BASE * pow(2, $index + $additional), $breakpoint);
+                #{$prop}-right: toFixedRem($BASE * pow(2, $index + $additional), $breakpoint);
+            }
+            @if($direction == top){
+                #{$prop}-top: toFixedRem($BASE * pow(2, $index + $additional), $breakpoint);
+            }
+            @if($direction == right){
+                #{$prop}-right: toFixedRem($BASE * pow(2, $index + $additional), $breakpoint);
+            }
+            @if($direction == bottom){
+                #{$prop}-bottom: toFixedRem($BASE * pow(2, $index + $additional), $breakpoint);
+            }
+            @if($direction == left){
+                #{$prop}-left: toFixedRem($BASE * pow(2, $index + $additional), $breakpoint);
+            }
+        }
+        $index: $index + 1
+    }
+}
+
+@mixin margin($size, $direction:null) {
+    @include define-mp(margin, $direction, $size);
+}
+
+@mixin padding($size, $direction:null) {
+    @include define-mp(padding, $direction, $size);
+}
+
+@mixin define-prop($prop, $sizes) {
+    @for $i from 1 through length($sizes) {
+        $breakpoint: nth(map-keys($grid-breakpoints), $i);
+        @include media-breakpoint-up($breakpoint) {
+            #{$prop}: nth($sizes, $i);
+        }
+    }
+}
+
+@mixin define-prop-sizes($prop, $sizes) {
+    @for $i from 1 through length($grid-breakpoints) {
+        $breakpoint: nth(map-keys($grid-breakpoints), $i);
+        @include media-breakpoint-up($breakpoint) {
+            $size: nth($sizes, $i);
+            #{$prop}: toFixedRem($size, $breakpoint);
+        }
+    }
+}
