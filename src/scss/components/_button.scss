@@ -2,24 +2,47 @@
     font-size: 1rem;
     line-height: 1.1;
     text-transform: uppercase;
-    padding: 1rem 2rem;
+    padding: toRem(15) 2rem toRem(12);
     background: $primary;
     color: $white;
     border-radius: 3rem;
-    border: none;
+    border: 1px solid $primary;
     @include animation();
     cursor: pointer;
     outline: none;
     @extend .shadow-2;
     text-align: center;
 
+    @include media-breakpoint-up(sm) {
+        padding: toRem(15) 2rem toRem(12);
+    }
+
+    @include media-breakpoint-up(md) {
+        padding: 1.1rem 2rem 1rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        padding: 1rem 2rem;
+    }
+
     &:hover {
         background: $primary-dark;
+        border-color: $primary-dark;
         color: $white;
         text-decoration: none;
     }
 
     &:focus {
         outline: none;
+    }
+
+    &.light {
+        background: $white;
+        border: 1px solid $gray-light-extra;
+        color: $primary;
+
+        &:hover {
+            background: $gray-light-extra;
+        }
     }
 }

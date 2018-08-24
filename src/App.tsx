@@ -57,6 +57,38 @@ class App extends React.Component {
             {title: 'Events'}
           ]}
         />
+
+        <div className="section">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-6 order-md-2 align-self-center section-image">
+                <div className="row justify-content-around">
+                  <div className="col-md-8 col-lg-6">
+                    <div className="avatar full-width shadow-5 primary">
+                      <div className="avatar-content">Content</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6 align-self-center">
+                <div className="block">
+                  <div className="block-preheader">Preheader</div>
+                  <div className="block-header">
+                    <h1>Header 1</h1>
+                    <div className="block-subheader">Subheader</div>
+                  </div>
+                  <div className="block-content">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                  </div>
+                  <div className="block-footer">
+                    <button className="btn block-button">Free trial</button>
+                    <button className="btn block-button light">Free trial</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="container-fluid">
           <div className="row">
             <div className="col">

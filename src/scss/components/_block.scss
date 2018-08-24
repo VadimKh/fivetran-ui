@@ -1,6 +1,10 @@
 .block {
     @include padding(md, y);
 
+    @include media-breakpoint-only(xs) {
+        text-align: center;
+    }
+
     &-preheader {
         @include margin(sm, bottom);
         @include letter-spacing();
@@ -39,5 +43,17 @@
 
     &-button {
         @include margin(md, top);
+
+        & + & {
+            @include margin(md, left);
+        }
+    }
+
+    &-footer {
+        display: flex;
+
+        @include media-breakpoint-only(xs) {
+            justify-content: space-around;
+        }
     }
 }
