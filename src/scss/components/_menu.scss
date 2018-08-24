@@ -1,5 +1,4 @@
 .menu {
-
     &-container {
         @extend .container-fluid;
         @extend .shadow-2;
@@ -62,12 +61,19 @@
             display: block;
             background: $gray-light-extra;
             border: 1px solid rgba($gray-dark, .15);
-            @include padding(md);
             line-height: 1;
             @include define-prop-sizes(font-size, (12, 18, 18));
             color: $gray;
             @include animation();
             min-width: toRem(120);
+
+            @include media-breakpoint-up(md) {
+                padding: toFixedRem(25, md) toFixedRem(30, md);
+            }
+
+            @include media-breakpoint-up(lg) {
+                padding: toFixedRem(25, lg) toFixedRem(30, lg);
+            }
 
             &:hover, &.is-active {
                 background: $white;
