@@ -1,39 +1,62 @@
 import * as React from 'react';
+import Menu from './components/Menu';
 import './scss/Main.scss';
 
 class App extends React.Component {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      isMenuOpened: false
+    };
+  }
+
   public render() {
     return (
       <>
-        <div className="menu has-breadcrumb">
-          <div className="menu-container">
-            <div className="menu-row">
-              <div className="col-auto">
-                <a href="/" className="menu-logo-link"><img className="menu-logo" src="img/logo.svg" alt="Fivetran"/></a>
-              </div>
-              <div className="col-auto d-flex align-items-center d-md-none">
-                <a href="#" className="menu-link">Log-In</a>
-                <div className="hamburger">
-                    <div className="hamburger-box">
-                        <div className="hamburger-inner" />
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breadcrumb">
-            <div className="breadcrumb-container">
-              <div className="breadcrumb-row">
-                <div className="breadcrumb-col">
-                  <div className="breadcrumb-icon"><i className="fas fa-home"/></div>
-                  <a href="#" className="breadcrumb-link">home</a>
-                  <a href="#" className="breadcrumb-link">connectors</a>
-                  <div className="breadcrumb-link">files</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Menu
+          items={[
+            {
+              subItems: [
+                {
+                  link: '#',
+                  title: 'Applications',
+                },
+                {
+                  link: '#',
+                  title: 'Databases',
+                },
+                {
+                  isActive: true,
+                  link: '#',
+                  title: 'Events',
+                },
+                {
+                  isNew: true,
+                  link: '#',
+                  title: 'Files',
+                }
+              ],
+              title: 'Connectors',
+            },
+            {
+              link: '#',
+              title: 'Features',
+            },
+            {
+              link: '#',
+              title: 'Documentation',
+            },
+            {
+              link: '#',
+              title: 'Resources',
+            }
+          ]}
+          breadcrumbs={[
+            {title: 'Home', link: '#'},
+            {title: 'Connectors', link: '#'},
+            {title: 'Events'}
+          ]}
+        />
         <div className="container-fluid">
           <div className="row">
             <div className="col">

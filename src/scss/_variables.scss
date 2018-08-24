@@ -33,13 +33,17 @@ $spacer: 1rem;
 $spacers: (
   6: ($spacer * 6)
 );
+$grid-gutter-width: 1rem;
 
-$grid-gutter-width: 4rem;
+$grid-gutter: (
+  xs: 12px,
+  md: 24px,
+  lg: 48px
+);
 
 $container-gutter: (
-  xs: 2 * $spacer,
-  xl: 4 * $spacer,
-  hd: 5 * $spacer,
-  fhd: 10 * $spacer
+  xs: 24px,
+  md: 72px,
+  lg: 120px
 )
 

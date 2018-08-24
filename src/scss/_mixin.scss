@@ -2,6 +2,11 @@
     transition: all .4s ease;
 }
 
+@mixin vertical-align() {
+    display: flex;
+    align-items: center;
+}
+
 @mixin define-header-sizes() {
     $index: 0;
     @each $breakpoint in map-keys($grid-breakpoints) {

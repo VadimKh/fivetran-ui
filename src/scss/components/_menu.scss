@@ -1,4 +1,5 @@
 .menu {
+
     &-container {
         @extend .container-fluid;
         @extend .shadow-2;
@@ -19,7 +20,7 @@
     }
 
     &-link {
-        font-size: toRem(18);
+        cursor: pointer;
         @include margin(lg, right);
         color: $gray-dark;
         @include animation();
@@ -27,6 +28,175 @@
         &:hover {
             text-decoration: none;
             color: $primary;
+        }
+    }
+
+    &-item {
+        &-link {
+            cursor: pointer;
+            @include define-prop-sizes(font-size, (12, 18, 24));
+            @include padding(md, right);
+            color: $gray-dark;
+            @include animation();
+
+            &:hover {
+                text-decoration: none;
+                color: $primary;
+            }
+        }
+
+        &-chevron {
+            position: relative;
+            top: toRem(1);
+            color: $primary;
+            margin-left: toRem(12);
+        }
+    }
+
+    &-sub-item {
+        margin: 0;
+        padding: 0;
+        &-link {
+            cursor: pointer;
+            position: relative;
+            display: block;
+            background: $gray-light-extra;
+            border: 1px solid rgba($gray-dark, .15);
+            @include padding(md);
+            line-height: 1;
+            @include define-prop-sizes(font-size, (12, 18, 18));
+            color: $gray;
+            @include animation();
+            min-width: toRem(120);
+
+            &:hover, &.is-active {
+                background: $white;
+                text-decoration: none;
+            }
+
+            &.is-active:before {
+                content: ' ';
+                position: absolute;
+                background: $primary;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                @include define-prop-sizes(width, (6, 6, 6));
+            }
+        }
+
+        &+& {
+            .menu-sub-item-link {
+                border-top: none;
+            }
+        }
+    }
+
+    &-submenu {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        &-container {
+            position: absolute;
+            overflow: hidden;
+        }
+    }
+
+    &-items {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    &-mobile {
+        margin: 0;
+        padding: 0;
+
+        &-container {
+            position: absolute;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+            z-index: 10;
+        }
+        &-item {
+            $padding: toRem(25);
+            position: relative;
+            @include vertical-align();
+            flex-direction: column;
+            background: $white;
+            border: {
+                top: 1px solid rgba($gray-dark, .15);
+                bottom: 1px solid rgba($gray-dark, .15);
+            }
+
+            &-link {
+                $line-height: toRem(20);
+                @include make-container();
+                font-size: toRem(24);
+                line-height: $line-height;
+                color: $gray-dark;
+                padding: {
+                    top: $padding;
+                    bottom: $padding;
+                }
+
+                &.is-active:before {
+                    content: ' ';
+                    position: absolute;
+                    width: toRem(6);
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    background: $primary;
+                    line-height: $line-height;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            &-chevron {
+                @extend .menu-item-chevron;
+            }
+        }
+
+        &-submenu {
+            @extend .menu-mobile;
+        }
+
+        &-submenu-container {
+            width: 100%;
+        }
+
+        &-sub-item {
+            @extend .menu-mobile-item;
+
+            &-link {
+                @extend .menu-mobile-item-link;
+                background: $gray-light-extra;
+                @include animation();
+
+                &:hover, &.is-active {
+                    background: $white;
+                }
+            }
+        }
+
+        &-button-container {
+            @include make-container();
+        }
+
+        &-button {
+            width: 100%;
+            margin: toRem(12) 0;
+            display: block;
+        }
+
+        @include media-breakpoint-up(md) {
+            display: none;
         }
     }
 }
@@ -47,10 +217,11 @@
     &-col {
         @extend .col;
         display: flex;
-        top: toRem(3);
+        margin-bottom: 0;
+        list-style: none;
     }
 
-    &-icon, &-link {
+    &-icon, &-link, &-text {
         color: $gray;
         @include define-prop-sizes(font-size, (12, 14, 18));
         line-height: 1;
@@ -61,10 +232,13 @@
     }
 
     &-icon {
+        display: flex;
+        align-items: center;
         @include margin(lg, right);
     }
 
-    &-link {
+    &-link, &-text {
+        display: inline;
         position: relative;
         @include margin(md, right);
 
@@ -72,19 +246,19 @@
             content: '>';
             @include margin(md, left);
         }
+    }
 
-        &:last-child {
-            &:after {
-                position: absolute;
-                left: -.5rem;
-                right: -.5rem;
-                height: 3px;
-                background: $primary;
-                display: block;
-                content: '';
-                margin: 0;
-                @include define-prop-sizes(bottom, (-12, -14, -18));
-            }
+    &-item:last-child {
+        .breadcrumb-text:after {
+            position: absolute;
+            left: -.5rem;
+            right: -.5rem;
+            height: 3px;
+            background: $primary;
+            display: block;
+            content: '';
+            margin: 0;
+            @include define-prop-sizes(bottom, (-12, -14, -18));
         }
     }
 }
