@@ -63,7 +63,7 @@ class App extends React.Component {
             <div className="row">
               <div className="col-md-6 order-md-2 align-self-center section-image">
                 <div className="row justify-content-around">
-                  <div className="col-md-8 col-lg-6">
+                  <div className="col-md-8 col-lg-8">
                     <div className="avatar full-width shadow-5 primary">
                       <div className="avatar-content">Content</div>
                     </div>

@@ -207,11 +207,12 @@
     }
 }
 .breadcrumb {
+    $borderSize: 3px;
     background: $gray-light-extra;
 
     &-container {
         @extend .container-fluid;
-        border-bottom: 3px solid $gray-light;
+        border-bottom: $borderSize solid $gray-light;
     }
 
     &-row {
@@ -223,6 +224,7 @@
     &-col {
         @extend .col;
         display: flex;
+        height: 100%;
         margin-bottom: 0;
         list-style: none;
     }
@@ -240,18 +242,25 @@
     &-icon {
         display: flex;
         align-items: center;
-        @include margin(lg, right);
+        margin-right: 1rem;
     }
 
     &-link, &-text {
         display: inline;
         position: relative;
-        @include margin(md, right);
+        margin-right: 1rem;
 
         &:after {
             content: '>';
-            @include margin(md, left);
+            margin-left: 1rem;
         }
+    }
+
+    &-item {
+        display: flex;
+        align-items: center;
+        position: relative;
+        top: $borderSize
     }
 
     &-item:last-child {
@@ -259,12 +268,12 @@
             position: absolute;
             left: -.5rem;
             right: -.5rem;
-            height: 3px;
+            height: $borderSize;
             background: $primary;
             display: block;
             content: '';
             margin: 0;
-            @include define-prop-sizes(bottom, (-12, -14, -18));
+            @include define-prop-sizes(bottom, (-12, -17, -20));
         }
     }
 }

@@ -33,7 +33,7 @@
 
         &.secondary {
             @include define-prop-sizes(font-size, (12, 18, 24));
-            @include define-prop-sizes(line-height, (24, 30, 36))
+            @include define-prop-sizes(line-height, (24, 30, 36));
         }
     }
 
@@ -45,7 +45,13 @@
         @include margin(md, top);
 
         & + & {
-            @include margin(md, left);
+            @include media-breakpoint-up(md) {
+                @include margin(md, left);
+            }
+
+            @include media-breakpoint-only(xs) {
+                @include margin(md, top);
+            }
         }
     }
 
@@ -53,7 +59,7 @@
         display: flex;
 
         @include media-breakpoint-only(xs) {
-            justify-content: space-around;
+            flex-direction: column;
         }
     }
 }

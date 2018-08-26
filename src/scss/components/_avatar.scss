@@ -1,0 +1,50 @@
+.avatar {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    @extend .shadow-2;
+    background: $gray-light-extra;
+    color: $gray-dark;
+
+
+    @include media-breakpoint-up(sm) {
+        width: toFixedRem(60, sm);
+        font-size: toFixedRem(12, sm);
+    }
+
+    @include media-breakpoint-up(md) {
+        width: toFixedRem(72, md);
+        font-size: toFixedRem(24, md);
+    }
+
+    @include media-breakpoint-up(lg) {
+        width: toFixedRem(96, lg);
+        font-size: toFixedRem(24, lg);
+    }
+
+    &:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+
+    &-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    &.primary {
+        background: $primary;
+        color: $white;
+    }
+
+    &.full-width {
+        width: 100%;
+    }
+}
