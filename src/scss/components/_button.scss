@@ -1,4 +1,5 @@
 .btn {
+    position: relative;
     font-size: 1rem;
     line-height: 1.1;
     text-transform: uppercase;
@@ -44,5 +45,12 @@
         &:hover {
             background: $gray-light-extra;
         }
+    }
+
+    &-badge {
+        position: absolute;
+        right: 0;
+        top: -.5rem;
+        letter-spacing: .125rem;
     }
 }

@@ -196,6 +196,30 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+        <br/>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-2">
+              <div className="btn">
+                button
+                <div className="badge btn-badge">badge</div>
+              </div>
+            </div>
+
+            <div className="col-2">
+              <div className="btn light">
+                button
+                <div className="badge btn-badge primary">badge</div>
+              </div>
+            </div>
+
+            <div className="col-2">
+              <div className="badge-container">
+                <a href="#"></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }
